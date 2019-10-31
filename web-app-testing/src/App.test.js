@@ -1,9 +1,25 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from "@testing-library/react"
 import App from './App';
+import AtBatDash from "./components/AtBatDash"
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
+test(`renders without crashing`, ()=> {
+  render(<App />);
+})
+
+test(`AtBatDash renders without crashing`, () => {
+  render(<AtBatDash />)
+})
+
+test(`strike is rendered`, () => {
+  const { getByTestId } = render(<AtBatDash />);
+
+  getByTestId("strikeText");
+})
+
+
+test(`strike is rendered`, () => {
+  const { getByTestId } = render(<AtBatDash />);
+
+  getByTestId("ballText");
+})
